@@ -1,0 +1,4 @@
+#wines above 95 points temp<-wines %>% filter(points >95) %>% group_by(country)%>% summarise(n = n()) %>% arrange(desc(n)) %>% head(n = 10) kable(temp)
+temp %>% ggplot(aes(x =reorder(country,n), y = n )) + geom_bar(stat='identity',colour="white", fill = c("darkorchid4")) + labs(x = 'country', y = 'Count', title = 'Best Wine Producing Country - Point wise') + coord_flip() + theme_bw()
+# Selecting top 20 from table based on Price temp<-wines %>% arrange(desc(price)) %>% head(n = 20)%>% group_by(country)%>% summarise(n = n())%>% arrange(desc(n)) 
+temp %>% ggplot(aes(x =reorder(country,n), y = n )) + geom_bar(stat='identity',colour="white", fill = c("darkorchid4")) + labs(x = 'Country', y = 'Count', title = 'Which Country Makes Coslty Wines') + coord_flip() + theme_bw()
